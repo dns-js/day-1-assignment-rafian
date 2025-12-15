@@ -1,0 +1,38 @@
+.container {
+    display:flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    height: 600px;
+}
+
+.box {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: blueviolet;
+    text-align: center;
+    font-size: 24px;
+    width: 200px;
+    font-weight: bold;
+    color: white;
+}
+
+.button{
+    background-color: aqua;
+}
+
+.button:hover{
+    background-color: lightblue;
+    cursor: pointer;
+    
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+}
