@@ -4,10 +4,12 @@ const cart = [
   { product: { name: "Bag", price: 150000 }, qty: 1 },
 ];
 
+//step 1
 function rectangleArea(width, height) {
     return width * height;
 }
 
+//step 2
 const rectangleAreaArrow = (width, height) => width * height;
 
 const labelWidth = 10;
@@ -15,14 +17,16 @@ const labelHeight = 4;
 //var labelArea = rectangleArea(labelWidth, labelHeight); 
 var labelArea = rectangleAreaArrow(labelWidth, labelHeight);
 
-console.log("labelArea === ",labelArea)
+console.log("Step 1 & 2:\nlabelArea === ",labelArea)
 
+//step 3
 function calcSubtotals(cart) {
     return cart.map(({ product: { name, price }, qty }) => ({ name, subtotal: price * qty }));
 }
 
-//console.log(calcSubtotals(cart));
+console.log("Step 3\n",calcSubtotals(cart));
 
+//step 4
 function addItem(cart, newItem){
     const newCart = [...cart, newItem];
     return newCart;
@@ -34,34 +38,43 @@ const newItem = {
 };
 
 const newCart = addItem(cart, newItem);
-//console.log(newCart);
-console.log(calcSubtotals(newCart));
+console.log("Step 4\n",newCart);
+//console.log(calcSubtotals(newCart));
 
+
+//step 5
 function cartCalculator(cart) {
     for (let i = 0; i < cart.length; i++) {
         const { product: { name, price }, qty } = cart[i];
-        if (qty >= 0) {
-            if (price >= 0) {
-                continue;
+        if (qty > 0 && Number.isInteger(qty)) {
             } else {
-}                return `Invalid price for ${name} product`;
-            }
-        else {
-                return `Invalid quantity for ${name} product`;
+                return `Invalid quantity for ${name} product`;            }    
+        if (price > 0 && Number.isInteger(price)) {
+            continue;
+            } else {
+                return `Invalid price for ${name} product`;
             }
         }
-    return "All quantities and prices are valid!"}
+    return "All quantities and prices are valid!"
+}
 
-console.log(cartCalculator(cart));
+console.log("Step 5\n",cartCalculator(cart));
 
 function totalQty(cart) {
     return cart.reduce((total, { qty }) => total + qty, 0);
 }
 
-console.log("Total Quantity: ", totalQty(newCart));
+//console.log("Total Quantity: ", totalQty(newCart));
 
 function totalPrice(cart) {
     return cart.reduce((total, { product: { price }, qty }) => total + price * qty, 0);
 }   
 
-console.log("Total Price: ", totalPrice(newCart));
+//console.log("Total Price: ", totalPrice(newCart));
+
+const finaloutput = {};
+finaloutput.labelArea = labelArea;
+finaloutput.items = calcSubtotals(newCart);
+finaloutput.totalQty = totalQty(newCart);
+finaloutput.totalPrice = totalPrice(newCart);
+console.log("Final output: \n",finaloutput);
